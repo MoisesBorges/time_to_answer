@@ -1,0 +1,20 @@
+  activerecord:
+    models:
+      admin:
+        one: administrador
+        other: administradores
+      profile:
+        one: Perfil
+        other: Perfis
+    attributes:
+      admin:
+        id: Código
+        email: Email
+        created_at: Criado em
+        updated_at: Atualizado em
+      profile:
+        id: Código
+        email: Email
+        created_at: Criado em
+        updated_at: Atualizado em
+      # will translate User attribute "login" as "Handle"
