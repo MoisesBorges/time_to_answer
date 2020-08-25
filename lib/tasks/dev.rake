@@ -12,8 +12,8 @@ namespace :dev do
       show_spinner("Registering the default admin DB...") { %x(rails dev:add_default_admin) }
       show_spinner("Registering more admins DB...") { %x(rails dev:add_more_admins) }
       show_spinner("Registering the default user DB...") { %x(rails dev:add_default_user) }
-      show_spinner("Registering the standard subjects ...") { %x(rails dev:add_subjects) }
-
+      show_spinner("Registering the standard subjects...") { %x(rails dev:add_subjects) }
+      show_spinner("Registering the questions and answer...") { %x(rails dev:add_answers_and_questions) }
     else
       puts "You aren't on development environment"
     end
@@ -57,8 +57,20 @@ namespace :dev do
       Subject.create!(description: line.strip)
     end
   end
-  
 
+  desc "Add questions and answers"
+  task add_answers_and_questions: :environment do
+    Subject.all.each do |subject|
+      rand(5..10).times do |i|
+      Question.create!(
+        description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+        subject: subject      
+      )
+      end
+    end
+  end
+
+  
   private
 
         def show_spinner(msg_start, msg_end = "Done!")
