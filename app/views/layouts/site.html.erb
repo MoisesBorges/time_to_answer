@@ -35,7 +35,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Time to Answer</a>
+            <%= link_to 'Time to Answer', root_path, class:"navbar-brand" %>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav"></ul>
@@ -74,24 +74,15 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>Site::Welcome#index</h1>
-        <p>Find me in app/views/site/welcome/index.html.erb</p>
-
-        <% if user_signed_in? %>
-            <p>USER is LOGGED / <%= current_user.email %> </p>
+        <% unless params[:term] %>
+          <h3>Últimas perguntas cadastradas</h3>
         <% else %>
-            <p>USER aren't LOGGED </p>
+          <h3><%= "Resultados para o termo \"#{params[:term]}\"..."%></h3>
         <% end %>
 
-        <% if admin_signed_in? %>
-            <p>ADMIN is LOGGED / <%= current_user.email %> </p>
-        <% else %>
-            <p>ADMIN aren't LOGGED </p>
-        <% end %> 
       </div>
-
-             <%= yield %>
-
+     
+      <%= yield %>
       </div> <!-- /container -->
 
     <%= javascript_include_tag 'application' %>
