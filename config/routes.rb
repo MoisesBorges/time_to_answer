@@ -15,9 +15,8 @@ Rails.application.routes.draw do
     resources :questions #Questões
   end
 
+  devise_for :admins, skip: [:registrations]
   devise_for :users
-  devise_for :admins
-  get 'welcome/index'
 
   get 'inicio', to: 'site/welcome#index'
 
