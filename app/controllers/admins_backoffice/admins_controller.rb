@@ -42,7 +42,7 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
   private
 
   def params_admin
-    params_admin = params.require(:admin).permit(:email, :password, :password_confirmation)
+     params.require(:admin).permit(:email, :password, :password_confirmation)
   end
 
   def set_admin
